@@ -16,8 +16,48 @@
 \setcounter{page}{1}
 \newpage
 
-\chapter{Opencv}
+\chapter{C/C++}
+\section{C++重载}
+C++ 允许在同一作用域中的某个函数和运算符指定多个定义，分别称为函数重载和运算符重载。重载函数或符号的名称相同但其功能并不相同，编译器会根据使用的形式来确定是那一个操作。
+运算符运算符重载格式
+\begin{lstlisting}[language=C]
+    <class-name> operator<operator-symbol>(inputs);
+\end{lstlisting}
+并非所有的运算符都可以重载，部分运算符如：
+\begin{lstlisting}[language=C]
+    .
+    .*
+    ->*
+    ::
+    ?:
+    #
+    sizeof
+\end{lstlisting}
+是不可以被重载的。
 
+\chapter{Data structure}
+\section{二叉树的前，中，候序遍历(DLR,LDR,LRD)的含义}
+\begin{itemize}
+    \item DLR: 根节点，左节点，右节点遍历。
+    \item LDR: 左节点，根节点，右节点遍历。
+    \item LRD: 左节点，右节点，根节点遍历。
+\end{itemize}
+
+\begin{figure}[H]
+    \centering  
+	\includegraphics[width=0.3\linewidth]{pic/tree}  
+	\caption{Tree}  
+\end{figure}
+
+\begin{itemize}
+    \item DLR: 1 2 4 5 7 8 3 6
+    \item LDR: 4 2 7 5 8 1 3 6
+    \item LRD: 4 7 8 5 2 6 3 1
+\end{itemize}
+
+得到一颗树的LDR和DLR或LRD中的一种是可以获得唯一的树的，如果仅仅是DLR和LRD则无法唯一确定。
+
+\chapter{Opencv}
 \section{VS环境下鼠标移到Mat卡死问题}
 Mat注释过长，转到Mat定义处（鼠标不停留选中），在Mat与注释间加一空行保存。
 
@@ -43,12 +83,6 @@ Mat注释过长，转到Mat定义处（鼠标不停留选中），在Mat与注�
 \section{VS下，使用nameWindow函数，imshow时却出项两个同名窗口问题}
 
 在\textbf{项目属性 $\rightarrow$ 链接器 $\rightarrow$ 输入 $\rightarrow$ 附加依赖项}中去掉两个\textbf{opencv\_worldxxx.lib}两个文件中的一个，debug时去掉不带d的。
-
-\chapter{C/C++}
-\section{派生类}
-\section{可见性}
-\section{存在性}
-
 
 \chapter{杂项}
 \setcounter{page}{1}
