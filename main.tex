@@ -1,0 +1,60 @@
+\documentclass[12pt,twoside]{report}
+
+\input{package.tex}
+\input{setting.tex}
+\input{theorem.tex}
+
+\begin{document}
+\title{\itshape{Shorthand Book}}
+\author{Ji Youzhou}
+\date{\today}
+\maketitle
+\thispagestyle{empty}
+\newpage
+
+\tableofcontents
+\setcounter{page}{1}
+\newpage
+
+\chapter{Opencv}
+
+\section{VS环境下鼠标移到Mat卡死问题}
+Mat注释过长，转到Mat定义处（鼠标不停留选中），在Mat与注释间加一空行保存。
+
+\section{分离RGB三通道}
+
+\begin{lstlisting}[language=C]
+    \\ 分配地址
+    vector<Mat> bgr;
+    \\ 分割窗口
+    split(src,bgr); 
+\end{lstlisting}
+
+\section{图片显示过大问题}
+
+\begin{lstlisting}[language=C]
+    \\ 设置窗口可调整
+    namedWindow("src", WINDOW_NORMAL); 
+    \\ 调整窗口大小
+    cvResizeWindow("src", 500, 500);
+    imshow("src", src);   
+\end{lstlisting}
+
+\section{VS下，使用nameWindow函数，imshow时却出项两个同名窗口问题}
+
+在\textbf{项目属性 $\rightarrow$ 链接器 $\rightarrow$ 输入 $\rightarrow$ 附加依赖项}中去掉两个\textbf{opencv\_worldxxx.lib}两个文件中的一个，debug时去掉不带d的。
+
+\chapter{C/C++}
+\section{派生类}
+\section{可见性}
+\section{存在性}
+
+
+\chapter{杂项}
+\setcounter{page}{1}
+\section{半收敛算法}
+所谓半收敛算法直观印象就是说，算法误差降低到某一低点后，又回升震荡，对判断何时真正停止算法照成了困扰。
+
+\section{椭圆的通径与偏心率}
+所谓通径，就是过焦点作垂直于长轴的直线，其与椭圆交于两点，这条线段的长度就叫做通径。偏心率指的是椭圆焦距与其长轴长度的比值。
+\end{document}
