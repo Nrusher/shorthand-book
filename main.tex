@@ -16,6 +16,272 @@
 \setcounter{page}{1}
 \newpage
 
+\chapter{ubuntu18.04}
+\setcounter{page}{1}
+\section{常用软件}
+可以用apt命令安装的
+\begin{leftbar}
+    \begin{itemize}
+        \item autotools : 自动生成makefile
+        \item doxygen ： 生成说明文档
+        \item git : 代码管理工具
+    \end{itemize}
+\end{leftbar}
+
+\section{git的使用}
+
+\begin{leftbar}
+    \begin{itemize}
+        \item git init : 创建git库
+        \item git add filename : 添加文件到缓冲区
+        \item git commit -m "message" : 
+        \item git diff filename :
+        \item git status ：
+        \item git reset --hard HEAD s$\hat{}$ :
+        \item git reset --hard v-id :
+        \item git log :
+        \item git log --graph :
+        \item git reflog :
+        \item git checkout -- filename :
+        \item git reset HEAD filename :
+        \item git rm filename :
+        \item git remote add origin git@server-name:path/repo-name.git : 
+        \item git push origin master : 
+        \item git clone git@server-name:path/repo-name.git
+        \item git checkout -b filename :
+        \item git branch :
+        \item git branch branch-name :
+        \item git branch -d branch-name :
+        \item gti branch -D branch-name :
+        \item git checkout branch-name :
+        \item git merge branch-name :
+        \item git merge --no-ff -m "message" branch-name :
+        \item git stash :
+        \item git stash pop :
+        \item git stash list :
+        \item git stash apply ：
+        \item git stash apply stash@\{number\} :
+        \item git stash drop :
+        \item git stash drop stash@\{number\} :
+    \end{itemize}
+\end{leftbar}
+
+
+\section{安装texlive套件}
+\begin{lstlisting}[language=sh]
+    sudo apt install texlive-full
+\end{lstlisting}
+
+\section{vscode 支持 latex 编辑}
+\begin{enumerate}
+    \item 下载\textbf{LaTex WorkShop}扩展。
+    \item 在\textbf{文件 $\rightarrow$ 首选项 $\rightarrow$ 设置 $\rightarrow$ LaTex $\rightarrow$ Chktex:Path} 中设置latex编译器路经，一般为\textbf{/usr/bin/}。
+    \item 为支持中文，一般需要使用\textbf{XeLaTex}编译，这需要设置\textbf{文件 $\rightarrow$ 首选项 $\rightarrow$ 设置 $\rightarrow$ LaTex $\rightarrow$ Latex: Recipes}，添加如下代码：
+    \begin{lstlisting}[language=Java]
+        "latex-workshop.latex.tools": [
+            {
+                "name": "latexmk",
+                "command": "latexmk",
+                "args": [
+                    "-synctex=1",
+                    "-interaction=nonstopmode",
+                    "-file-line-error",
+                    "-pdf",
+                    "-outdir=%OUTDIR%",
+                    "%DOC%"
+                ],
+                "env": {}
+            },
+            {
+                "name": "pdflatex",
+                "command": "pdflatex",
+                "args": [
+                    "-synctex=1",
+                    "-interaction=nonstopmode",
+                    "-file-line-error",
+                    "%DOC%"
+                ],
+                "env": {}
+            },
+            {
+                "name": "bibtex",
+                "command": "bibtex",
+                "args": [
+                    "%DOCFILE%"
+                ],
+                "env": {}
+            },
+            {
+                "name": "xelatex",
+                "command": "xelatex",
+                "args": [
+                    "-synctex=1",
+                    "-interaction=nonstopmode",
+                    "-file-line-error",
+                    "%DOC%"
+                ],
+                "env": {}
+            }
+        ],
+        "latex-workshop.latex.recipes":[
+            {
+                "name": "xelatex",
+                "tools": [
+                    "xelatex"
+                ]
+            },
+            {
+                "name": "latexmk",
+                "tools": [
+                    "latexmk"
+                ]
+            },
+            {
+                "name": "pdflatex ➞ bibtex ➞ pdflatex × 2",
+                "tools": [
+                    "pdflatex",
+                    "bibtex",
+                    "pdflatex",
+                    "pdflatex"
+                ]
+            }
+        ], 
+    \end{lstlisting}
+\end{enumerate}
+
+\section{换国内下载源}
+
+\begin{enumerate}
+    \item 备份文件。
+    \begin{lstlisting}[language=sh]
+        cp /etc/apt/sources.list /etc/apt/sources.list.bak
+    \end{lstlisting}
+
+    \item 添加新源。
+    \begin{lstlisting}[language=sh]
+vim /etc/apt/sources.list
+#添加阿里源
+deb http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted universe multiverse
+
+##中科大源
+deb https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse
+deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic main restricted universe multiverse
+deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
+deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
+deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
+deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
+deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
+deb https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
+deb-src https://mirrors.ustc.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
+
+##163源
+deb http://mirrors.163.com/ubuntu/ bionic main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ bionic-security main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb http://mirrors.163.com/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ bionic main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ bionic-security main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ bionic-updates main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ bionic-proposed main restricted universe multiverse
+deb-src http://mirrors.163.com/ubuntu/ bionic-backports main restricted universe multiverse
+
+##清华源
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse
+deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
+deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-updates main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
+deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
+deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
+deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
+deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restricted universe multiverse
+    \end{lstlisting}
+
+    \item 更新。
+    \begin{lstlisting}[language=sh]
+        sudo apt update
+        sudo apt upgrade
+    \end{lstlisting}
+\end{enumerate}
+
+\section{python3 安装pip工具并升级}
+\begin{lstlisting}[language=sh]
+    #安装
+    sudo apt install python3-pip
+    #升级
+    sudo pip3 install --upgrade pip
+    #查看版本
+    pip3 --version
+\end{lstlisting}
+
+\section{pip3 报错}
+\noindent 错误提示：
+\begin{lstlisting}[language=sh]
+Traceback (most recent call last):
+File "/usr/bin/pip3", line 9, in <module>
+  from pip import main
+ImportError: cannot import name 'main'  
+\end{lstlisting}
+解决方法：
+\begin{lstlisting}[language=sh]
+sudo gedit /usr/bin/pip3
+sudo cp /usr/bin/pip3 /usr/bin/pip3.bak
+\end{lstlisting}
+将
+\begin{lstlisting}[language=python]
+from pip import main
+if __name__ == '__main__':
+    sys.exit(main())
+\end{lstlisting}
+替换为
+\begin{lstlisting}[language=python]
+from pip import __main__
+if __name__ == '__main__':
+    sys.exit(__main__._main())
+\end{lstlisting}
+
+\section{pip3 换国内源}
+\begin{lstlisting}[language=sh]
+mkdir ~/.pip
+gedit ~/.pip/pip.conf
+\end{lstlisting}
+
+添加如下代码
+\begin{lstlisting}[language=sh]
+[global]
+timeout = 6000
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+trusted-host = pypi.tuna.tsinghua.edu.cn
+\end{lstlisting}
+
+\section{开启SSH服务}
+\begin{lstlisting}[language=sh]
+    #更新软件库信息
+    sudo apt update
+    #安装用户端
+    sudo apt install openssh-client
+    #安装服务端
+    sudo apt install openssh-server
+    #开启SSH服务
+    sudo service ssh start
+    #确认是否开启成功，ssh-agent表示client成功，sshd代表server成功。
+    sudo ps -e|grep ssh
+    #查看ip地址便于连接，这是局域网地址，公网ip地址在百度搜ip可以得到
+    ifcofig
+\end{lstlisting}
+
 \chapter{C/C++}
 \section{C++重载}
 C++ 允许在同一作用域中的某个函数和运算符指定多个定义，分别称为函数重载和运算符重载。重载函数或符号的名称相同但其功能并不相同，编译器会根据使用的形式来确定是那一个操作。
@@ -43,11 +309,11 @@ C++ 允许在同一作用域中的某个函数和运算符指定多个定义，�
     \item LRD: 左节点，右节点，根节点遍历。
 \end{itemize}
 
-\begin{figure}[H]
-    \centering  
-	\includegraphics[width=0.3\linewidth]{pic/tree}  
-	\caption{Tree}  
-\end{figure}
+% \begin{figure}[H]
+%     \centering  
+% 	\includegraphics[width=0.3\linewidth]{pic/tree}  
+% 	\caption{Tree}  
+% \end{figure}
 
 \begin{itemize}
     \item DLR: 1 2 4 5 7 8 3 6
@@ -88,7 +354,7 @@ Mat注释过长，转到Mat定义处（鼠标不停留选中），在Mat与注�
 Mat::forEach()具有最高的效率，对于Mat::at和指针来说其实两者效率差不都，指针略优。
 
 \chapter{杂项}
-\setcounter{page}{1}
+
 \section{半收敛算法}
 所谓半收敛算法直观印象就是说，算法误差降低到某一低点后，又回升震荡，对判断何时真正停止算法照成了困扰。
 
