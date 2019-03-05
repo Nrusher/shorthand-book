@@ -84,6 +84,9 @@ Mat注释过长，转到Mat定义处（鼠标不停留选中），在Mat与注�
 
 在\textbf{项目属性 $\rightarrow$ 链接器 $\rightarrow$ 输入 $\rightarrow$ 附加依赖项}中去掉两个\textbf{opencv\_worldxxx.lib}两个文件中的一个，debug时去掉不带d的。
 
+\section{遍历Mat元数}
+Mat::forEach()具有最高的效率，对于Mat::at和指针来说其实两者效率差不都，指针略优。
+
 \chapter{杂项}
 \setcounter{page}{1}
 \section{半收敛算法}
