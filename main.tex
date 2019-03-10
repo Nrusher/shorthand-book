@@ -34,22 +34,22 @@
     \begin{itemize}
         \item git init : 创建git库
         \item git add filename : 添加文件到缓冲区
-        \item git commit -m "message" : 
-        \item git diff filename :
-        \item git status ：
-        \item git reset --hard HEAD s$\hat{}$ :
-        \item git reset --hard v-id :
-        \item git log :
-        \item git log --graph :
-        \item git reflog :
+        \item git commit -m "message" : 提交缓冲区文件到
+        \item git diff filename : 查看文件的不同之处
+        \item git status ：查看git库的状态
+        \item git reset --hard HEAD s$\hat{}$ : 恢复上一个版本
+        \item git reset --hard v-id : 恢复特定的版本
+        \item git log : 查看git记录
+        \item git log --graph : 亦图的方式查看git记录
+        \item git reflog :  
         \item git checkout -- filename :
         \item git reset HEAD filename :
         \item git rm filename :
-        \item git remote add origin git@server-name:path/repo-name.git : 
-        \item git push origin master : 
-        \item git clone git@server-name:path/repo-name.git
-        \item git checkout -b filename :
-        \item git branch :
+        \item git remote add origin git@server-name:path/repo-name.git : 增加远程库
+        \item git push origin master : 推送到远程库的master分支
+        \item git clone git@server-name:path/repo-name.git : 复制远程库
+        \item git checkout -b filename : 
+        \item git branch : 查看分支
         \item git branch branch-name :
         \item git branch -d branch-name :
         \item gti branch -D branch-name :
@@ -324,6 +324,11 @@ C++ 允许在同一作用域中的某个函数和运算符指定多个定义，�
 得到一颗树的LDR和DLR或LRD中的一种是可以获得唯一的树的，如果仅仅是DLR和LRD则无法唯一确定。
 
 \chapter{Opencv}
+\section{255限值}
+\begin{lstlisting}[language=C]
+    saturate_cast<type>(value);
+\end{lstlisting}
+
 \section{VS环境下鼠标移到Mat卡死问题}
 Mat注释过长，转到Mat定义处（鼠标不停留选中），在Mat与注释间加一空行保存。
 
@@ -360,4 +365,18 @@ Mat::forEach()具有最高的效率，对于Mat::at和指针来说其实两者�
 
 \section{椭圆的通径与偏心率}
 所谓通径，就是过焦点作垂直于长轴的直线，其与椭圆交于两点，这条线段的长度就叫做通径。偏心率指的是椭圆焦距与其长轴长度的比值。
+
+\section{好用的插件Vs code}
+
+\begin{leftbar}
+    \begin{itemize}
+        \item Markdown Preview Enhanced
+    \end{itemize}
+\end{leftbar}
+
+\section{浏览器打印问题}
+浏览器打印会存在不能打印文档背景等问题，设置中设置一下就可以了。
+
+\section{Altium designer 从原理图更新至PCB时出现提示：failed to match * of * components using unique identifiers }
+解决方法: 在PCB编辑界面（不是原理图编辑界面）”Project—>Component links” 选择对应器件一一对应就行了
 \end{document}
