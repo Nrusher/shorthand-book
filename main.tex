@@ -77,6 +77,13 @@
     \end{itemize}
 \end{leftbar}
 
+\section{git的.gitignore}
+.gitignore对已经跟踪的文件或者文件夹是不起作用的，使用如下的命令可以进行更改
+\begin{lstlisting}[language=sh]
+    git rm -r --cached .
+    git add .
+    git commit -m 'update .gitignore'
+\end{lstlisting}
 
 \section{安装texlive套件}
 \begin{lstlisting}[language=sh]
@@ -367,7 +374,10 @@ Mat注释过长，转到Mat定义处（鼠标不停留选中），在Mat与注�
 在\textbf{项目属性 $\rightarrow$ 链接器 $\rightarrow$ 输入 $\rightarrow$ 附加依赖项}中去掉两个\textbf{opencv\_worldxxx.lib}两个文件中的一个，debug时去掉不带d的。
 
 \section{遍历Mat元数}
-Mat::forEach()具有最高的效率，对于Mat::at和指针来说其实两者效率差不都，指针略优。
+Mat::forEach()具有最高的效率，对于Mat::at和指针来说其实两者效率差不都，指针略优，LUT函数也是一种高效的方式。
+
+\section{findContours()}
+findContours()的输入图片是0，1二值图像，默认以1为物体，0为背景，当输入图片边界处为白色或非0值灰度时，其会在边界处多出一个边界，编程时需要注意。
 
 \chapter{杂项}
 
@@ -390,4 +400,15 @@ Mat::forEach()具有最高的效率，对于Mat::at和指针来说其实两者�
 
 \section{Altium designer 从原理图更新至PCB时出现提示：failed to match * of * components using unique identifiers }
 解决方法: 在PCB编辑界面（不是原理图编辑界面）”Project—>Component links” 选择对应器件一一对应就行了
+
+\section{五大常用算法}
+\begin{leftbar}
+    \begin{itemize}
+        \item 递归
+        \item 分治
+        \item 贪心
+        \item 回溯
+        \item 分支界定
+    \end{itemize}
+\end{leftbar}
 \end{document}
