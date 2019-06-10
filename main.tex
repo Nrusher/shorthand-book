@@ -16,6 +16,8 @@
 \setcounter{page}{1}
 \newpage
 
+
+
 \chapter{ubuntu18.04}
 \setcounter{page}{1}
 \section{常用软件}
@@ -25,6 +27,7 @@
         \item autotools : 自动生成makefile
         \item doxygen ： 生成说明文档
         \item git : 代码管理工具
+        \item vim : 终端编辑器
     \end{itemize}
 \end{leftbar}
 
@@ -96,7 +99,7 @@
     \item 在\textbf{文件 $\rightarrow$ 首选项 $\rightarrow$ 设置 $\rightarrow$ LaTex $\rightarrow$ Chktex:Path} 中设置latex编译器路经，一般为\textbf{/usr/bin/}。
     \item 为支持中文，一般需要使用\textbf{XeLaTex}编译，这需要设置\textbf{文件 $\rightarrow$ 首选项 $\rightarrow$ 设置 $\rightarrow$ LaTex $\rightarrow$ Latex: Recipes}，添加如下代码：
     \begin{lstlisting}[language=Java]
-        "latex-workshop.latex.tools": [
+        "latex-workshop.latex.tools
             {
                 "name": "latexmk",
                 "command": "latexmk",
@@ -244,6 +247,16 @@ deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restri
     pip3 --version
 \end{lstlisting}
 
+\section{python3 导出安装包目录requirements.txt或根据requirements.txt安装拓展包}
+\begin{lstlisting}[language=sh]
+    # 导出方法一
+    pip3 freeze > requirements.txt
+    # 导出方法二
+    pipreqs ./ --encoding=utf8
+    # 根据requirements.txt安装
+    pip install -r requriements.txt
+\end{lstlisting}
+
 \section{pip3 报错}
 \noindent 错误提示：
 \begin{lstlisting}[language=sh]
@@ -299,6 +312,9 @@ trusted-host = pypi.tuna.tsinghua.edu.cn
     #查看ip地址便于连接，这是局域网地址，公网ip地址在百度搜ip可以得到
     ifcofig
 \end{lstlisting}
+
+\chapter{win10}
+\section{创建ssh密钥}
 
 \chapter{C/C++}
 \section{C++重载}
@@ -412,3 +428,19 @@ findContours()的输入图片是0，1二值图像，默认以1为物体，0为�
     \end{itemize}
 \end{leftbar}
 \end{document}
+
+\section{优秀软件推荐}
+\begin{leftbar}
+    \begin{itemize}
+        \item understand 源码分析软件
+        \item vscode 文本编辑器
+    \end{itemize}
+\end{leftbar}
+
+\section{优秀网站推荐}
+\begin{leftbar}
+    \begin{itemize}
+        \item understand 源码分析软件
+        \item vscode 文本编辑器
+    \end{itemize}
+\end{leftbar}
