@@ -16,6 +16,8 @@
 \setcounter{page}{1}
 \newpage
 
+
+
 \chapter{ubuntu18.04}
 \setcounter{page}{1}
 \section{常用软件}
@@ -25,6 +27,7 @@
         \item autotools : 自动生成makefile
         \item doxygen ： 生成说明文档
         \item git : 代码管理工具
+        \item vim : 终端编辑器
     \end{itemize}
 \end{leftbar}
 
@@ -34,22 +37,22 @@
     \begin{itemize}
         \item git init : 创建git库
         \item git add filename : 添加文件到缓冲区
-        \item git commit -m "message" : 
-        \item git diff filename :
-        \item git status ：
-        \item git reset --hard HEAD s$\hat{}$ :
-        \item git reset --hard v-id :
-        \item git log :
-        \item git log --graph :
-        \item git reflog :
+        \item git commit -m "message" : 提交缓冲区文件到
+        \item git diff filename : 查看文件的不同之处
+        \item git status ：查看git库的状态
+        \item git reset --hard HEAD s$\hat{}$ : 恢复上一个版本
+        \item git reset --hard v-id : 恢复特定的版本
+        \item git log : 查看git记录
+        \item git log --graph : 亦图的方式查看git记录
+        \item git reflog :  
         \item git checkout -- filename :
         \item git reset HEAD filename :
         \item git rm filename :
-        \item git remote add origin git@server-name:path/repo-name.git : 
-        \item git push origin master : 
-        \item git clone git@server-name:path/repo-name.git
-        \item git checkout -b filename :
-        \item git branch :
+        \item git remote add origin git@server-name:path/repo-name.git : 增加远程库
+        \item git push origin master : 推送到远程库的master分支
+        \item git clone git@server-name:path/repo-name.git : 复制远程库
+        \item git checkout -b filename : 
+        \item git branch : 查看分支
         \item git branch branch-name :
         \item git branch -d branch-name :
         \item gti branch -D branch-name :
@@ -65,9 +68,25 @@
         \item git stash drop stash@\{number\} :
         \item git branch --set-upstream-to <branch-name> origin/<branch-name> :
         \item git remote -v :
+        \item git rebase :
+        \item git tag :
+        \item git tag <tagname> :
+        \item git tag -a <tagname> -a "message" :
+        \item git tag <tagname> <commit-id> :
+        \item git tag -d <tagname> :
+        \item git show <tagname> :
+        \item git push origin <tagname> :
+        \item git push origin --tags :
     \end{itemize}
 \end{leftbar}
 
+\section{git的.gitignore}
+.gitignore对已经跟踪的文件或者文件夹是不起作用的，使用如下的命令可以进行更改
+\begin{lstlisting}[language=sh]
+    git rm -r --cached .
+    git add .
+    git commit -m 'update .gitignore'
+\end{lstlisting}
 
 \section{安装texlive套件}
 \begin{lstlisting}[language=sh]
@@ -80,7 +99,7 @@
     \item 在\textbf{文件 $\rightarrow$ 首选项 $\rightarrow$ 设置 $\rightarrow$ LaTex $\rightarrow$ Chktex:Path} 中设置latex编译器路经，一般为\textbf{/usr/bin/}。
     \item 为支持中文，一般需要使用\textbf{XeLaTex}编译，这需要设置\textbf{文件 $\rightarrow$ 首选项 $\rightarrow$ 设置 $\rightarrow$ LaTex $\rightarrow$ Latex: Recipes}，添加如下代码：
     \begin{lstlisting}[language=Java]
-        "latex-workshop.latex.tools": [
+        "latex-workshop.latex.tools
             {
                 "name": "latexmk",
                 "command": "latexmk",
@@ -228,6 +247,16 @@ deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-proposed main restri
     pip3 --version
 \end{lstlisting}
 
+\section{python3 导出安装包目录requirements.txt或根据requirements.txt安装拓展包}
+\begin{lstlisting}[language=sh]
+    # 导出方法一
+    pip3 freeze > requirements.txt
+    # 导出方法二
+    pipreqs ./ --encoding=utf8
+    # 根据requirements.txt安装
+    pip install -r requriements.txt
+\end{lstlisting}
+
 \section{pip3 报错}
 \noindent 错误提示：
 \begin{lstlisting}[language=sh]
@@ -284,6 +313,9 @@ trusted-host = pypi.tuna.tsinghua.edu.cn
     ifcofig
 \end{lstlisting}
 
+\chapter{win10}
+\section{创建ssh密钥}
+
 \chapter{C/C++}
 \section{C++重载}
 C++ 允许在同一作用域中的某个函数和运算符指定多个定义，分别称为函数重载和运算符重载。重载函数或符号的名称相同但其功能并不相同，编译器会根据使用的形式来确定是那一个操作。
@@ -326,6 +358,11 @@ C++ 允许在同一作用域中的某个函数和运算符指定多个定义，�
 得到一颗树的LDR和DLR或LRD中的一种是可以获得唯一的树的，如果仅仅是DLR和LRD则无法唯一确定。
 
 \chapter{Opencv}
+\section{255限值}
+\begin{lstlisting}[language=C]
+    saturate_cast<type>(value);
+\end{lstlisting}
+
 \section{VS环境下鼠标移到Mat卡死问题}
 Mat注释过长，转到Mat定义处（鼠标不停留选中），在Mat与注释间加一空行保存。
 
@@ -353,7 +390,10 @@ Mat注释过长，转到Mat定义处（鼠标不停留选中），在Mat与注�
 在\textbf{项目属性 $\rightarrow$ 链接器 $\rightarrow$ 输入 $\rightarrow$ 附加依赖项}中去掉两个\textbf{opencv\_worldxxx.lib}两个文件中的一个，debug时去掉不带d的。
 
 \section{遍历Mat元数}
-Mat::forEach()具有最高的效率，对于Mat::at和指针来说其实两者效率差不都，指针略优。
+Mat::forEach()具有最高的效率，对于Mat::at和指针来说其实两者效率差不都，指针略优，LUT函数也是一种高效的方式。
+
+\section{findContours()}
+findContours()的输入图片是0，1二值图像，默认以1为物体，0为背景，当输入图片边界处为白色或非0值灰度时，其会在边界处多出一个边界，编程时需要注意。
 
 \chapter{杂项}
 
@@ -362,4 +402,45 @@ Mat::forEach()具有最高的效率，对于Mat::at和指针来说其实两者�
 
 \section{椭圆的通径与偏心率}
 所谓通径，就是过焦点作垂直于长轴的直线，其与椭圆交于两点，这条线段的长度就叫做通径。偏心率指的是椭圆焦距与其长轴长度的比值。
+
+\section{好用的插件Vs code}
+
+\begin{leftbar}
+    \begin{itemize}
+        \item Markdown Preview Enhanced
+    \end{itemize}
+\end{leftbar}
+
+\section{浏览器打印问题}
+浏览器打印会存在不能打印文档背景等问题，设置中设置一下就可以了。
+
+\section{Altium designer 从原理图更新至PCB时出现提示：failed to match * of * components using unique identifiers }
+解决方法: 在PCB编辑界面（不是原理图编辑界面）”Project—>Component links” 选择对应器件一一对应就行了
+
+\section{五大常用算法}
+\begin{leftbar}
+    \begin{itemize}
+        \item 递归
+        \item 分治
+        \item 贪心
+        \item 回溯
+        \item 分支界定
+    \end{itemize}
+\end{leftbar}
 \end{document}
+
+\section{优秀软件推荐}
+\begin{leftbar}
+    \begin{itemize}
+        \item understand 源码分析软件
+        \item vscode 文本编辑器
+    \end{itemize}
+\end{leftbar}
+
+\section{优秀网站推荐}
+\begin{leftbar}
+    \begin{itemize}
+        \item understand 源码分析软件
+        \item vscode 文本编辑器
+    \end{itemize}
+\end{leftbar}
