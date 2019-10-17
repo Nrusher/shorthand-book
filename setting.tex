@@ -78,6 +78,13 @@ frame = single,
 \usetikzlibrary{calc,matrix,decorations.markings,decorations.pathreplacing}
 \usetikzlibrary{arrows,shapes,chains}
 
+% 设置中文日期格式
+\renewcommand{\today}{\number\year 年 \number\month 月 \number\day 日}
+% 设置中文目录
+\renewcommand{\contentsname}{目 录}
+% 设置章节格式
+\titleformat{\chapter}{\raggedright\Huge\bfseries}{第\,\thechapter\,章}{1em}{}
+
 
 
 
