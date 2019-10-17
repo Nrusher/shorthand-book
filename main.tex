@@ -5,7 +5,7 @@
 \input{theorem.tex}
 
 \begin{document}
-\title{\itshape{Shorthand Book}}
+\title{\itshape{Latex中文模板}}
 \author{Ji Youzhou}
 \date{\today}
 \maketitle
@@ -15,8 +15,6 @@
 \tableofcontents
 \setcounter{page}{1}
 \newpage
-
-
 
 \chapter{ubuntu18.04}
 \setcounter{page}{1}
@@ -99,7 +97,7 @@
     \item 在\textbf{文件 $\rightarrow$ 首选项 $\rightarrow$ 设置 $\rightarrow$ LaTex $\rightarrow$ Chktex:Path} 中设置latex编译器路经，一般为\textbf{/usr/bin/}。
     \item 为支持中文，一般需要使用\textbf{XeLaTex}编译，这需要设置\textbf{文件 $\rightarrow$ 首选项 $\rightarrow$ 设置 $\rightarrow$ LaTex $\rightarrow$ Latex: Recipes}，添加如下代码：
     \begin{lstlisting}[language=Java]
-        "latex-workshop.latex.tools
+        "latex-workshop.latex.tools":[
             {
                 "name": "latexmk",
                 "command": "latexmk",
